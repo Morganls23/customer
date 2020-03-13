@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:TokenExchangeProcessorPolicies defaultTokenExchangeProcessorPolicyId="AT2SAML" xmlns:urn="urn:pingidentity.com:pf:oauth:token:exchange">
+    <urn:TokenExchangeProcessorPolicy id="AT2SAML" name="AT2SAML" actorTokenRequired="false">
+        <urn:ExtendedAttributeContract>
+            <urn1:ExtendedAttribute AttributeName="groups" MaskValue="false" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:ExtendedAttribute AttributeName="email" MaskValue="false" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        </urn:ExtendedAttributeContract>
+        <urn:TokenExchangeProcessorMapping subjectTokenType="urn:ietf:params:oauth:token-type:access_token" subjectTokenProcessorId="AT" actorTokenType="urn:ietf:params:oauth:token-type:access_token" actorTokenProcessorId="AT">
+            <urn:AttributeMappingType>
+                <urn1:AttributeMap Name="subject" Type="Actor Token" Value="actortoken.subject" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                <urn1:AttributeMap Name="groups" Type="LDAP" AttributeSourceId="PD" Value="isMemberOf" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                <urn1:AttributeMap Name="email" Type="LDAP" AttributeSourceId="PD" Value="mail" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                <urn1:AttributeSource Id="PD" Description="PD" Type="LDAP" DataSourceId="LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                    <urn1:Parameter Name="filter" Value="uid=${subjecttoken.subject}"/>
+                    <urn1:Parameter Name="search_base" Value="ou=people,dc=example,dc=com"/>
+                    <urn1:Parameter Name="search_scope" Value="SUBTREE_SCOPE"/>
+                    <urn1:Parameter Name="memberof_nested_group" Value="false"/>
+                </urn1:AttributeSource>
+                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            </urn:AttributeMappingType>
+        </urn:TokenExchangeProcessorMapping>
+    </urn:TokenExchangeProcessorPolicy>
+</urn:TokenExchangeProcessorPolicies>
