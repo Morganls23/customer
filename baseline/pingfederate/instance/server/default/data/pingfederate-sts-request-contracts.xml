@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sts:request-contracts xmlns:sts="http://pingidentity.com/2009/05/sts-requestcontract">
-    <sts:request-contract id="AT4SAML" name="AT4SAML">
-        <sts:Attribute AttributeName="sub"/>
-    </sts:request-contract>
-</sts:request-contracts>
+<?xml version="1.0" encoding="utf-8"?>
+<rc:request-contracts xmlns:rc="http://pingidentity.com/2009/05/sts-requestcontract">
+</rc:request-contracts>

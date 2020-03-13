@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urn:TokenExchangeGeneratorPolicies defaultTokenExchangeGeneratorPolicyId="ATSAML" xmlns:urn="urn:pingidentity.com:pf:oauth:token:exchange">
-    <urn:TokenExchangeGeneratorPolicy id="ATSAML" name="ATSAML" defaultTokenType="urn:ietf:params:oauth:token-type:saml2">
-        <urn:ResourceUri>https://morgan.ping-eng.com:9031/*</urn:ResourceUri>
-        <urn:ResourceUri>https://localhost:9031</urn:ResourceUri>
-        <urn:TokenExchangeGeneratorTypeMapping tokenType="urn:ietf:params:oauth:token-type:saml2" tokenGeneratorId="SAMLGen"/>
-    </urn:TokenExchangeGeneratorPolicy>
-</urn:TokenExchangeGeneratorPolicies>
